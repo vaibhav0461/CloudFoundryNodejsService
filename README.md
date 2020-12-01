@@ -120,8 +120,28 @@ memory	| The memory quota which should be allocated for this application.
 random-route | if this property is set to true, Cloud Foundry will assign a random route (URL) to the application
 
 ### Step 5: Push the app to your SAP Cloud Platform Cloud Foundry space
-For pushing to Cloud Foundry from Command Prompt you need to install CLI into your system
+For pushing app to Cloud Foundry from Command Prompt you need to install CLI into your system
 You can find installation link below
 
 **For MacOSx and Linux**
+https://docs.cloudfoundry.org/cf-cli/install-go-cli.html
+
+**For Windows**
+https://packages.cloudfoundry.org/stable?release=windows64&version=v7&source=github
+
+Login to your cloud foundry account in which you want to deploy the app. 
+For detailed login step please refer the [guide](https://developers.sap.com/tutorials/cp-cf-download-cli.html).
+
+After login to Cf account run the below command inside the **nodetutorial** directory to start the deployment process:-
+```
+user@host:~/nodetutorial
+=> cf push
+```
+
+### Step 6: Figure out the application URL
+After deployment is completed you should see the URL of the app in the console output.
+
+![deployment url](/image/deployment_url.png)
+
+### Step 7: Protecting app by OAuth2.0 mechanism
 
