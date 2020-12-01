@@ -144,4 +144,68 @@ After deployment is completed you should see the URL of the app in the console o
 ![deployment url](/image/deployment_url.png)
 
 ### Step 7: Protecting app by OAuth2.0 mechanism
+Create a **Authorization & Trust Management (xsuaa)** service instance in Cloud Foundry Account
+![XSUAA Instance](/image/deployment_url.png)
+
+Bind application **myapp** to xsuaa instance created above
+![Bind Application](/image/bind_app.png)
+
+Add below code in server.js for protecting the app. 
+
+```
+const passport = require('passport');
+const { JWTStrategy } = require('@sap/xssec');
+const xsenv = require('@sap/xsenv');
+```
+
+```
+// XSUAA Middleware
+passport.use(new JWTStrategy(xsenv.getServices({uaa:{tag:'xsuaa'}}).uaa));
+
+app.use(passport.initialize());
+app.use(passport.authenticate('JWT', { session: false }));
+```
+
+Final code will look like as below
+```
+const express = require('express');
+const app = express();
+const passport = require('passport');
+const { JWTStrategy } = require('@sap/xssec');
+const xsenv = require('@sap/xsenv');
+const bodyParser = require('body-parser');
+app.use(bodyParser.json({ extended: true }));
+
+// XSUAA Middleware
+passport.use(new JWTStrategy(xsenv.getServices({uaa:{tag:'xsuaa'}}).uaa));
+
+app.use(passport.initialize());
+app.use(passport.authenticate('JWT', { session: false }));
+
+app.get('/', function (req, res) {
+  res.send('Hello World!');
+});
+
+app.post('/GetData', function (req, res) {
+   res.send('Hello World!');
+});
+
+
+const port = process.env.PORT || 3000;
+app.listen(port, function () {
+  console.log('myapp listening on port ' + port);
+});
+```
+
+### Step 8: Consume myapp service in RestClient
+
+Fetch Client_id and Client_secret from xsuaa instance
+![client_credentials](/image/client_credentials.jpeg)
+
+Fetching access token from xsuaa instance using above credentials
+![Access Token Fetch](/image/access_token_fetch.jpeg)
+
+Access myapp Service using above token
+![Access_service](/image/access_service.jpeg)
+
 
