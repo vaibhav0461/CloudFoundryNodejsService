@@ -141,14 +141,14 @@ user@host:~/nodetutorial
 ### Step 6: Figure out the application URL
 After deployment is completed you should see the URL of the app in the console output.
 
-![deployment url](/image/deployment_url.png)
+![deployment url](/images/deployment_url.png)
 
 ### Step 7: Protecting app by OAuth2.0 mechanism
 Create a **Authorization & Trust Management (xsuaa)** service instance in Cloud Foundry Account
-![XSUAA Instance](/image/deployment_url.png)
+![XSUAA Instance](/images/xsuaa_instance.png)
 
 Bind application **myapp** to xsuaa instance created above
-![Bind Application](/image/bind_app.png)
+![Bind Application](/images/bind_app.png)
 
 Add below code in server.js for protecting the app. 
 
@@ -200,12 +200,13 @@ app.listen(port, function () {
 ### Step 8: Consume myapp service in RestClient
 
 Fetch Client_id and Client_secret from xsuaa instance
-![client_credentials](/image/client_credentials.jpeg)
+![client_credentials](/images/client_credentials.png)
 
 Fetching access token from xsuaa instance using above credentials
-![Access Token Fetch](/image/access_token_fetch.jpeg)
+![Access Token Fetch](/images/access_token_fetch1.png)
+![Access Token Fetch](/images/access_token_fetch2.png)
 
 Access myapp Service using above token
-![Access_service](/image/access_service.jpeg)
+![Access_service](/images/access_service.png)
 
 
