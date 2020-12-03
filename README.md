@@ -1,6 +1,6 @@
 ### Step 1: Create your application
 1. Create a new dedicated directory for your Node.js application called **nodetutorial** and another directory inside it called **myapp**.
-2. To start the application setup, change to the myapp directory and execute **npm init** in the command line. This will walk you through creating a **package.json** file.
+2. To start the application setup, change to the myapp directory and execute **npm init** (Install [node.js/npm](https://nodejs.org/en/download/)) in the command line. This will walk you through creating a **package.json** file.
 
 ```
 user@host:~/nodetutorial/myapp
