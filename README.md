@@ -88,7 +88,7 @@ Create a **manifest.yaml** file in the **nodetutorial** directory. This file is 
 
 Copy the following content to the recently created file:
 ```
---
+---
 applications:
 - name: myapp
   random-route: true
